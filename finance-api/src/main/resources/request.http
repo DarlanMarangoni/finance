@@ -1,9 +1,11 @@
 GET http://localhost:8080/categories
 Accept: application/json
+chave-Api: client001
 
 ###
 POST http://localhost:8080/categories
 Content-Type: application/json
+chave-Api: client001
 
 {
   "name": "Salário"
