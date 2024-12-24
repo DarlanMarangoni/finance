@@ -1,3 +1,18 @@
+POST http://localhost:8080/users
+Content-Type: application/json
+chave-Api: client001
+
+{
+  "name": "Darlan",
+  "email": "marangoni.darlan1@gmail.com"
+}
+
+###
+GET http://localhost:8080/users
+Accept: application/json
+chave-Api: client001
+
+###
 GET http://localhost:8080/categories
 Accept: application/json
 chave-Api: client001
@@ -12,3 +27,4 @@ chave-Api: client001
 }
 
 ###
+
