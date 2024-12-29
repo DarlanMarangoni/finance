@@ -1,5 +1,6 @@
 POST http://localhost:8080/users
 Content-Type: application/json
+Authorization: Basic user fb8a4a83-0b63-48d2-b46a-0d5891016e80
 chave-Api: client001
 
 {
@@ -10,16 +11,19 @@ chave-Api: client001
 ###
 GET http://localhost:8080/users
 Accept: application/json
+Authorization: Basic user fb8a4a83-0b63-48d2-b46a-0d5891016e80
 chave-Api: client001
 
 ###
 GET http://localhost:8080/categories
 Accept: application/json
+Authorization: Basic user 6fb0dcc6-821c-49b7-a910-5b3344d610ce
 chave-Api: client001
 
 ###
 POST http://localhost:8080/categories
 Content-Type: application/json
+Authorization: Basic user 6fb0dcc6-821c-49b7-a910-5b3344d610ce
 chave-Api: client001
 
 {
