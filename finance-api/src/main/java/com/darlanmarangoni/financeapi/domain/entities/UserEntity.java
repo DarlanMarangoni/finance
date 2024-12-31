@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.util.UUID;
 
 @Entity
+@Table(name = "USERS")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
+@Table(name = "CATEGORIES")
 public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

@@ -34,7 +34,6 @@ public class WebSecurityConfig {
                 .password("fb8a4a83-0b63-48d2-b46a-0d5891016e80")
                 .roles("USER")
                 .build();
-        System.out.println(user.getPassword());
         return new InMemoryUserDetailsManager(user);
     }
 }

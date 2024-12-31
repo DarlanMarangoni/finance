@@ -8,6 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "BANK_STATEMENTS")
 public class BankStatementEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
