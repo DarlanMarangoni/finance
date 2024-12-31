@@ -23,6 +23,12 @@ public class BankStatementEntity {
     private BankStatementType bankStatementType;
     @Column(name = "VALUE", nullable = false)
     private BigDecimal value;
+    @Column(name = "PAYMENT_DATE")
+    private String paymentDate;
+    @Column(name = "DUE_DATE", nullable = false)
+    private String dueDate;
+    @Column(name = "RELEASE_DATE", nullable = false)
+    private String releaseDate;
     @CreationTimestamp
     @Column(name = "CREATED_DATE", nullable = false)
     private String createdDate;
