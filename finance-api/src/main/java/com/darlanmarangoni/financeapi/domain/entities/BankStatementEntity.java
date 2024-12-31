@@ -14,7 +14,8 @@ import java.time.LocalDateTime;
 @Table(name = "BANK_STATEMENTS")
 public class BankStatementEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bankStatementsSqGen")
+    @SequenceGenerator(name = "bankStatementsSqGen", sequenceName = "BANK_STATEMENTS_SEQ", allocationSize = 1)
     @Column(name = "ID", nullable = false)
     private Long id;
     @Column(name = "NAME", nullable = false)
