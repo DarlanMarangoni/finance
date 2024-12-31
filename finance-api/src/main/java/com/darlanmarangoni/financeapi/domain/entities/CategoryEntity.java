@@ -8,7 +8,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name = "CATEGORIES")
 public class CategoryEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoriesSqGen")
+    @SequenceGenerator(name = "categoriesSqGen", sequenceName = "CATEGORIES_SEQ", allocationSize = 1)
     @Column(name = "ID", nullable = false)
     private Long id;
     @Column(name = "NAME", nullable = false)
