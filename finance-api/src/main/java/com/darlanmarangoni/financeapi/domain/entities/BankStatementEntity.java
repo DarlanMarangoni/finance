@@ -1,11 +1,14 @@
 package com.darlanmarangoni.financeapi.domain.entities;
 
 import com.darlanmarangoni.financeapi.domain.BankStatementType;
+import com.darlanmarangoni.financeapi.domain.dtos.BankStatementDto;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "BANK_STATEMENTS")
@@ -24,17 +27,34 @@ public class BankStatementEntity {
     @Column(name = "VALUE", nullable = false)
     private BigDecimal value;
     @Column(name = "PAYMENT_DATE")
-    private String paymentDate;
-    @Column(name = "DUE_DATE", nullable = false)
-    private String dueDate;
+    private LocalDate paymentDate;
+    @Column(name = "DUE_DATE")
+    private LocalDate dueDate;
     @Column(name = "RELEASE_DATE", nullable = false)
-    private String releaseDate;
+    private LocalDate releaseDate;
     @CreationTimestamp
     @Column(name = "CREATED_DATE", nullable = false)
-    private String createdDate;
+    private LocalDateTime createdDate;
     @UpdateTimestamp
     @Column(name = "UPDATED_DATE", nullable = false)
-    private String updatedDate;
+    private LocalDateTime updatedDate;
     @ManyToOne
     private CategoryEntity category;
+
+    public static BankStatementEntity from(BankStatementDto bankStatementDto) {
+        BankStatementEntity entity = new BankStatementEntity();
+        entity.name = bankStatementDto.name();
+        entity.category = null;
+        entity.dueDate = bankStatementDto.dueDate();
+        entity.releaseDate = bankStatementDto.releaseDate();
+        entity.paymentDate = bankStatementDto.paymentDate();
+        entity.value = new BigDecimal(bankStatementDto.value());
+        entity.bankStatementType = bankStatementDto.bankStatementType();
+        entity.description = bankStatementDto.description();
+        return entity;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
+    }
 }
