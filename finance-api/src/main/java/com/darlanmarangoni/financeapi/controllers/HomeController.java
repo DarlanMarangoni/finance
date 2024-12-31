@@ -1,11 +1,11 @@
-package com.darlanmarangoni.financeapi.resources;
+package com.darlanmarangoni.financeapi.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeResource {
+public class HomeController {
 
     @GetMapping("/")
     public String home(Model model) {
