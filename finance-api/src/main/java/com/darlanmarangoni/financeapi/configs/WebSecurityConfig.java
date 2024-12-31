@@ -23,7 +23,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults())
+                .logout(Customizer.withDefaults());
         return http.build();
     }
 

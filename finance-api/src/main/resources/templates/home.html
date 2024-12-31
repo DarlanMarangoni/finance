@@ -2,8 +2,16 @@
 <html lang="pt-br">
 <head>
     <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
 </head>
 <body>
     <h1 th:text="${message}">Default Message</h1>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" value="Sign out">
+    </form>
+
+    <!-- Bootstrap JS (opcional) -->
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
