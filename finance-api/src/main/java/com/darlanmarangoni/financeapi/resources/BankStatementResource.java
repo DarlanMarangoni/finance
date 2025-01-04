@@ -1,18 +1,17 @@
 package com.darlanmarangoni.financeapi.resources;
 
 import com.darlanmarangoni.financeapi.domain.dtos.BankStatementDto;
-import com.darlanmarangoni.financeapi.domain.dtos.UserDto;
 import com.darlanmarangoni.financeapi.domain.entities.BankStatementEntity;
 import com.darlanmarangoni.financeapi.domain.entities.CategoryEntity;
-import com.darlanmarangoni.financeapi.domain.entities.UserEntity;
 import com.darlanmarangoni.financeapi.repositories.BankStatementRepository;
 import com.darlanmarangoni.financeapi.repositories.CategoryRepository;
-import com.darlanmarangoni.financeapi.repositories.UserRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -30,7 +29,7 @@ public class BankStatementResource {
 
     @PostMapping
     public ResponseEntity<Void> createUser(@RequestBody BankStatementDto bankStatementDto) {
-        Optional<CategoryEntity> opt = categoryRepository.findByName(bankStatementDto.categorie());
+        Optional<CategoryEntity> opt = categoryRepository.findByName(bankStatementDto.getCategorie());
         if (opt.isEmpty()) {
             throw new RuntimeException("Category not exists");
         }

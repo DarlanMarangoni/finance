@@ -44,18 +44,22 @@ public class BankStatementEntity {
 
     public static BankStatementEntity from(BankStatementDto bankStatementDto) {
         BankStatementEntity entity = new BankStatementEntity();
-        entity.name = bankStatementDto.name();
+        entity.name = bankStatementDto.getName();
         entity.category = null;
-        entity.dueDate = bankStatementDto.dueDate();
-        entity.releaseDate = bankStatementDto.releaseDate();
-        entity.paymentDate = bankStatementDto.paymentDate();
-        entity.value = new BigDecimal(bankStatementDto.value());
-        entity.bankStatementType = bankStatementDto.bankStatementType();
-        entity.description = bankStatementDto.description();
+        entity.dueDate = bankStatementDto.getDueDate();
+        entity.releaseDate = bankStatementDto.getReleaseDate();
+        entity.paymentDate = bankStatementDto.getPaymentDate();
+        entity.value = new BigDecimal(bankStatementDto.getValue());
+        entity.bankStatementType = bankStatementDto.getBankStatementType();
+        entity.description = bankStatementDto.getDescription();
         return entity;
     }
 
     public void setCategory(CategoryEntity category) {
         this.category = category;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
