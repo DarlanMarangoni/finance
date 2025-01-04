@@ -5,7 +5,7 @@ import com.darlanmarangoni.financeapi.domain.BankStatementType;
 import java.time.LocalDate;
 
 public class BankStatementDto {
-    private String categorie;
+    private Long categorie;
     private String name;
     private String value;
     private LocalDate releaseDate;
@@ -14,11 +14,11 @@ public class BankStatementDto {
     private String description;
     private BankStatementType bankStatementType;
 
-    public String getCategorie() {
+    public Long getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(String categorie) {
+    public void setCategorie(Long categorie) {
         this.categorie = categorie;
     }
 
@@ -78,17 +78,4 @@ public class BankStatementDto {
         this.bankStatementType = bankStatementType;
     }
 
-    @Override
-    public String toString() {
-        return "BankStatementDto{" +
-                "categorie='" + categorie + '\'' +
-                ", name='" + name + '\'' +
-                ", value='" + value + '\'' +
-                ", releaseDate=" + releaseDate +
-                ", dueDate=" + dueDate +
-                ", paymentDate=" + paymentDate +
-                ", description='" + description + '\'' +
-                ", bankStatementType=" + bankStatementType +
-                '}';
-    }
 }
