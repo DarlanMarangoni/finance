@@ -9,47 +9,56 @@
     <div class="container">
         <h1 th:text="${message}" style="text-align: center">Default Message</h1>
 
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputName" placeholder="Salário">
-            <label for="floatingInputName">Nome</label>
-        </div>
+        <form action="#" type="submit" class="row g-2" th:action="@{/bankStatement}" th:object="${bankStatementDto}" method="post">
+            <div class="col-md-6">
+                <label for="floatingInputName">Nome</label>
+                <input type="text" class="form-control" id="floatingInputName" placeholder="Nome" th:field="*{name}">
+            </div>
 
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputDescription" placeholder="Salário">
-            <label for="floatingInputDescription">Descrição</label>
-        </div>
+            <div class="col-md-6">
+                <label for="floatingInputDescription">Descrição</label>
+                <input type="text" class="form-control" id="floatingInputDescription" placeholder="Descrição" th:field="*{description}">
+            </div>
 
-        <div class="form-floating mb-3">
-            <input type="number" class="form-control" id="floatingInputValue" placeholder="R$ 1000,00">
-            <label for="floatingInputValue">Valor</label>
-        </div>
+            <div class="col-md-3">
+                <label for="floatingInputValue">Valor</label>
+                <input type="number" class="form-control" id="floatingInputValue" placeholder="R$ 1000,00" th:field="*{value}">
+            </div>
 
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputRelease" placeholder="02/01/2024" onfocus="this.type = 'date'">
-            <label for="floatingInputRelease">Data de lançamento</label>
-        </div>
-
-
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputPayment" placeholder="02/01/2024" onfocus="this.type = 'date'">
-            <label for="floatingInputPayment">Data de pagamento</label>
-        </div>
+            <div class="col-md-3">
+                <label for="floatingInputRelease">Data de lançamento</label>
+                <input type="text" class="form-control" id="floatingInputRelease" placeholder="02/01/2024" onfocus="this.type = 'date'" th:field="*{releaseDate}">
+            </div>
 
 
-        <div class="form-floating">
-            <input type="text" class="form-control" id="floatingInputDue" placeholder="" onfocus="this.type = 'date'">
-            <label for="floatingInputDue">Data de vencimento</label>
-        </div>
+            <div class="col-md-3">
+                <label for="floatingInputPayment">Data de pagamento</label>
+                <input type="text" class="form-control" id="floatingInputPayment" placeholder="02/01/2024" onfocus="this.type = 'date'" th:field="*{paymentDate}">
+            </div>
 
-        <label for="categories"></label>
-        <select class="form-select" id="categories" name="categories" th:field="*{categories}">
-            <option th:each="category : ${categories}" th:value="${category.getId()}" th:text="${category.getName()}"></option>
-        </select>
+            <div class="col-md-3">
+                <label for="floatingInputDue">Data de vencimento</label>
+                <input type="text" class="form-control" id="floatingInputDue" placeholder="02/01/2024" onfocus="this.type = 'date'" th:field="*{dueDate}">
+            </div>
 
-        <label for="bankStatementTypes"></label>
-        <select class="form-select" id="bankStatementTypes" name="bankStatementTypes" th:field="*{bankStatementTypes}">
-            <option th:each="bankStatementType : ${bankStatementTypes}" th:value="${bankStatementType.name()}" th:text="${bankStatementType.name()}"></option>
-        </select>
+            <div class="col-md-3">
+                <label for="categories">Categoria</label>
+                <select class="form-select" id="categories" name="categories" th:field="*{categorie}">
+                    <option th:each="item : ${categories}" th:value="${item.getId()}" th:text="${item.getName()}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="bankStatementTypes">Tipo</label>
+                <select class="form-select" id="bankStatementTypes" name="bankStatementTypes" th:field="*{bankStatementType}">
+                    <option th:each="item : ${bankStatementTypes}" th:value="${item.name()}" th:text="${item.name()}"></option>
+                </select>
+            </div>
+
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
 
     </div>
 </body>
