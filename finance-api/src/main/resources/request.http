@@ -1,0 +1,51 @@
+POST http://localhost:8080/bank-statements
+Content-Type: application/json
+Authorization: Basic darlan fb8a4a83-0b63-48d2-b46a-0d5891016e80
+chave-Api: client001
+
+{
+  "name": "Salário",
+  "description": "",
+  "dueDate": "",
+  "paymentDate": "",
+  "releaseDate": "2024-12-28",
+  "categorie": "Salário",
+  "bankStatementType": "INCOME",
+  "value": "11000"
+}
+
+###
+POST http://localhost:8080/users
+Content-Type: application/json
+Authorization: Basic darlan fb8a4a83-0b63-48d2-b46a-0d5891016e80
+chave-Api: client001
+
+{
+  "name": "Darlan",
+  "email": "marangoni.darlan1@gmail.com"
+}
+
+###
+GET http://localhost:8080/users
+Accept: application/json
+Authorization: Basic darlan fb8a4a83-0b63-48d2-b46a-0d5891016e80
+chave-Api: client001
+
+###
+GET http://localhost:8080/categories
+Accept: application/json
+Authorization: Basic darlan fb8a4a83-0b63-48d2-b46a-0d5891016e80
+chave-Api: client001
+
+###
+POST http://localhost:8080/categories
+Content-Type: application/json
+Authorization: Basic darlan fb8a4a83-0b63-48d2-b46a-0d5891016e80
+chave-Api: client001
+
+{
+  "name": "Salário"
+}
+
+###
+

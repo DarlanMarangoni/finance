@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>Extrato</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+    <div th:insert="fragments :: nav-bar"></div>
+    <div class="container">
+        <h1 th:text="${message}" style="text-align: center">Default Message</h1>
+
+        <form action="#" type="submit" class="row g-2" th:action="@{/bankStatement}" th:object="${bankStatementDto}" method="post">
+            <div class="col-md-6">
+                <label for="floatingInputName">Nome</label>
+                <input type="text" class="form-control" id="floatingInputName" placeholder="Nome" th:field="*{name}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="floatingInputDescription">Descrição</label>
+                <input type="text" class="form-control" id="floatingInputDescription" placeholder="Descrição" th:field="*{description}">
+            </div>
+
+            <div class="col-md-3">
+                <label for="floatingInputValue">Valor</label>
+                <input type="number"  step="0.01" class="form-control" id="floatingInputValue" placeholder="R$ 1000,00" th:field="*{value}">
+            </div>
+
+            <div class="col-md-3">
+                <label for="floatingInputRelease">Data de lançamento</label>
+                <input type="text" class="form-control" id="floatingInputRelease" placeholder="02/01/2024" onfocus="this.type = 'date'" th:field="*{releaseDate}">
+            </div>
+
+
+            <div class="col-md-3">
+                <label for="floatingInputPayment">Data de pagamento</label>
+                <input type="text" class="form-control" id="floatingInputPayment" placeholder="02/01/2024" onfocus="this.type = 'date'" th:field="*{paymentDate}">
+            </div>
+
+            <div class="col-md-3">
+                <label for="floatingInputDue">Data de vencimento</label>
+                <input type="text" class="form-control" id="floatingInputDue" placeholder="02/01/2024" onfocus="this.type = 'date'" th:field="*{dueDate}">
+            </div>
+
+            <div class="col-md-3">
+                <label for="categories">Categoria</label>
+                <select class="form-select" id="categories" name="categories" th:field="*{categorie}">
+                    <option th:each="item : ${categories}" th:value="${item.getId()}" th:text="${item.getName()}"></option>
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label for="bankStatementTypes">Tipo</label>
+                <select class="form-select" id="bankStatementTypes" name="bankStatementTypes" th:field="*{bankStatementType}">
+                    <option th:each="item : ${bankStatementTypes}" th:value="${item.name()}" th:text="${item.name()}"></option>
+                </select>
+            </div>
+
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>
