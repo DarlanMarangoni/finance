@@ -23,7 +23,7 @@ public class CategoryService {
     }
 
     public List<CategoryEntity> findAll() {
-        return categoryRepository.findAll();
+        return categoryRepository.findByOrderByNameAsc();
     }
 
     public Optional<CategoryEntity> findById(Long id) {
