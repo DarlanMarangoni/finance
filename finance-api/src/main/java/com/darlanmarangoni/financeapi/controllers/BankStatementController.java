@@ -7,6 +7,10 @@ import com.darlanmarangoni.financeapi.domain.entities.CategoryEntity;
 import com.darlanmarangoni.financeapi.exceptions.NotFoundException;
 import com.darlanmarangoni.financeapi.services.BankStatementService;
 import com.darlanmarangoni.financeapi.services.CategoryService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,14 +34,15 @@ public class BankStatementController {
     }
 
     @GetMapping("/bankStatement")
-    public String bankStatement(final Model model) {
+    public String bankStatement(@PageableDefault(page = 0, size = 7, sort = "releaseDate", direction = Sort.Direction.DESC) final Pageable pageable,
+                                final Model model) {
         final List<CategoryEntity> categories = categoryService.findAll();
-        final List<BankStatementEntity> releases = bankStatementService.findByReleaseDate();
+        final Page<BankStatementEntity> releases = bankStatementService.findByReleaseDate(pageable);
         model.addAttribute("message", "Lançamentos de receitas e despesas");
         model.addAttribute("bankStatementTypes", BankStatementType.values());
         model.addAttribute("categories", categories);
         model.addAttribute("bankStatementDto", new BankStatementDto());
-        model.addAttribute("releases", releases);
+        model.addAttribute("releases", releases.getContent());
         return "bankStatement";
     }
 

@@ -7,8 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 
 @Service
 public class BankStatementService {
@@ -24,7 +22,7 @@ public class BankStatementService {
         bankStatementRepository.save(entity);
     }
 
-    public List<BankStatementEntity> findByReleaseDate() {
-        return bankStatementRepository.findByOrderByReleaseDateDesc();
+    public Page<BankStatementEntity> findByReleaseDate(Pageable pageable) {
+        return bankStatementRepository.findAll(pageable);
     }
 }
