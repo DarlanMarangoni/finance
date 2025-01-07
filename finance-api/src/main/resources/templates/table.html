@@ -1,38 +1,33 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Fragments</title>
 </head>
 <body>
-    <div th:fragment="table">
+    <div th:fragment="table(list)">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Descrição</th>
                 <th scope="col">Lançamento</th>
                 <th scope="col">Pagamento</th>
                 <th scope="col">Vencimento</th>
                 <th scope="col">Categoria</th>
+                <th scope="col">Tipo</th>
                 <th scope="col">Valor</th>
-                <th scope="col">Ações</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Burger king</td>
-                <td>Burger king</td>
-                <td>05/01/2025</td>
-                <td>05/01/2025</td>
-                <td></td>
-                <td>Refeição</td>
-                <td>R$16,90</td>
-                <td style="align-content: center">
-                    <i class="bi-trash"></i>
-                    <i class="bi-pencil"></i>
-                </td>
+            <tr th:each="item : ${list}">
+                <td th:text="${item.name}"></td>
+                <td th:text="${item.description}"></td>
+                <td th:text="${item.releaseDate}"></td>
+                <td th:text="${item.paymentDate}"></td>
+                <td th:text="${item.dueDate}"></td>
+                <td th:text="${item.bankStatementType.name}">Refeição</td>
+                <td th:text="${item.category.name}">Refeição</td>
+                <td th:text="${item.value}"></td>
             </tr>
             </tbody>
         </table>

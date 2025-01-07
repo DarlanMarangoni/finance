@@ -32,10 +32,12 @@ public class BankStatementController {
     @GetMapping("/bankStatement")
     public String bankStatement(final Model model) {
         final List<CategoryEntity> categories = categoryService.findAll();
+        final List<BankStatementEntity> releases = bankStatementService.findByReleaseDate();
         model.addAttribute("message", "Lançamentos de receitas e despesas");
         model.addAttribute("bankStatementTypes", BankStatementType.values());
         model.addAttribute("categories", categories);
         model.addAttribute("bankStatementDto", new BankStatementDto());
+        model.addAttribute("releases", releases);
         return "bankStatement";
     }
 

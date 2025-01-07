@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Extrato</title>
     <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
@@ -67,7 +67,7 @@
 
         <h2 style="text-align: center">Últimos de lançamentos</h2>
 
-        <div th:insert="table :: table"></div>
+        <div th:insert="table :: table(${releases})"></div>
 
     </div>
 </body>
